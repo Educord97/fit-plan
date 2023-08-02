@@ -8,6 +8,9 @@ O frontend da aplicação foi desenvolvido com Angular e o backend foi simulado 
 
 https://educord97.github.io/fit-plan/
 
+## Protótipo
+https://www.figma.com/file/dYKENVTHs9dSy6nyTfbjgr/FitPlan?type=design&node-id=0%3A1&mode=design&t=2drLqpzic2dV1xSo-1
+
 ## Checklist
 
 - [x] Criar o repositório no GitHub com a estrutura do Gitflow, ou seja, branches main e develop.
