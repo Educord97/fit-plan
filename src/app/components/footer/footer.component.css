@@ -1,0 +1,15 @@
+.footer {
+    position: fixed;
+    bottom: 0;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+}
+
+.footer > span {
+    font-size: 1.1rem;
+    font-weight: 100;
+}
+mat-toolbar {
+    background: #5C4B8B;
+}
