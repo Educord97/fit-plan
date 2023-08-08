@@ -1,7 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { HomeComponent } from './components/pages/home/home.component';
+import { ImcComponent } from './components/pages/imc/imc.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: HomeComponent,
+  },
+  {
+    path: 'imc',
+    component: ImcComponent,
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

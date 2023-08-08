@@ -1,0 +1,18 @@
+mat-toolbar {
+    background: #5C4B8B;
+    color: #fff
+}
+
+.nav-links-right {
+    display: flex;
+    margin-left: 90px;
+}
+
+.nav-item {
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-item:hover {
+    color: #DC8218
+}

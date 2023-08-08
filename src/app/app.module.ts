@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { HttpClientModule } from '@angular/common/http';
+
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
-import { SobreComponent } from './components/sobre/sobre.component';
-import { ImcComponent } from './components/imc/imc.component';
-import { TreinosComponent } from './components/treinos/treinos.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { FooterComponent } from './components/footer/footer.component';
+import { HomeComponent } from './components/pages/home/home.component';
+import { SobreComponent } from './components/pages/sobre/sobre.component';
+import { ImcComponent } from './components/pages/imc/imc.component';
+import { TreinosComponent } from './components/pages/treinos/treinos.component';
+import { NavbarComponent } from './components/layouts/navbar/navbar.component';
+import { FooterComponent } from './components/layouts/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Angular Material
@@ -37,6 +40,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatInputModule,

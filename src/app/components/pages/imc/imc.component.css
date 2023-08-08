@@ -1,0 +1,80 @@
+.title-imc {
+    display: flex;
+    justify-content: center;
+    font-size: 32px;
+    color: #dc8218;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.mt-form {
+    width: 100%;
+    margin-top: 50px;
+    margin-left: 100px;
+
+}
+
+.mt-30-width {
+    width: 38%;
+    margin-right: 50px;
+}
+
+.mt-full-width {
+    width: 81%;
+}
+
+.abaixoDoPeso {
+    background-color: #dc8218 !important;
+}
+
+.levementeAcima {
+    background-color: #d3d62f !important;
+}
+
+.pesoIdeal {
+    background-color: #07c417 !important;
+}
+
+.obesidade1,
+.obesidade2,
+.obesidade3 {
+    background-color: #e9261f !important;
+}
+
+
+table {
+    border-collapse: collapse;
+    width: 81%;
+    margin: 20px auto;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #f2f2f2;
+}
+
+th {
+    background-color: #5c4b8bcf;
+    color: #fff;
+}
+
+tr td:first-child {
+    background-color: #5c4b8bcf;
+    color: #fff;
+}
+
+.even-listed {
+    background-color: #5c4b8b54;
+}
