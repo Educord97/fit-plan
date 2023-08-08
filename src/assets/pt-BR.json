@@ -1,0 +1,103 @@
+{
+  "Navbar": {
+    "logo": "FitPlan",
+    "sobre": "Sobre",
+    "treinos": "Treinos",
+    "tabelaIMC": "Tabela IMC"
+  },
+  "HomeResultados": {
+    "resultados": "Meus resultados",
+    "imc": "IMC",
+    "intensidade": {
+      "intensidadeLeve": "Treino Leve",
+      "intensidadeMedio": "Treino Médio",
+      "intensidadePesado": "Treino Pesado"
+    }
+  },
+  "Treinos": {
+    "meusTreinos": "Meus Treinos",
+    "treinosLista": {
+      "treino1": "Treino 1",
+      "treino2": "Treino 2",
+      "treino3": "Treino 3"
+    },
+    "diasDaSemana": {
+      "segunda": "Segunda-feira",
+      "terca": "Terça-feira",
+      "quarta": "Quarta-feira",
+      "quinta": "Quinta-feira",
+      "sexta": "Sexta-feira",
+      "sabado": "Sábado"
+    },
+    "divisaoTreinos": {
+      "treinoPeitoA": "Peito",
+      "treinoPeitoB": "Peito e Tríceps",
+      "treinoTricepsA": "Triceps",
+      "treinoTricepsB": "Triceps e Bíceps",
+      "treinoPernasA": "Pernas",
+      "treinoPernasB": "Ombros e Pernas",
+      "treinoOmbrosA": "Ombros",
+      "treinoOmbrosB": "Costas e Ombros",
+      "treinoBicepsA": "Bíceps",
+      "treinoBicepsB": "Costas e Bíceps",
+      "treinoCostasA": "Costas"
+    },
+    "novoTreino": {
+      "titulo": "Novo Treino",
+      "nome": "Nome",
+      "objetivo": {
+        "ganharMassa": "Ganhar Massa Muscular",
+        "perderPeso": "Perder peso"
+      }
+    }
+  },
+  "Footer": {
+    "autor": "FitPlan - Desenvolvido por Eduardo Lima"
+  },
+  "Sobre": {
+    "titulo": "FitPlan",
+    "subtitulo": "Mude seu corpo, transforme sua vida.",
+    "cardLeft": {
+      "titulo": "Venha pra cá!",
+      "subtitulo": "Faça parte da comunidade FitPlan e comece hoje a transformar sua jornada fitness. Simplifique, motive-se e alcance seus objetivos com o FitPlan!"
+    },
+    "cardRight": {
+      "titulo": "Treinos sob medida para você!",
+      "subtitulo": "Aqui na FitPlan, oferecemos treinos personalizados para atender às suas necessidades e objetivos únicos"
+    }
+  },
+  "IMC": {
+    "titulo": "Tabela IMC",
+    "peso": "Peso (kg)",
+    "altura": "Altura (cm)",
+    "resultadoLabel": "Resultado",
+    "imcParametros": {
+      "nivel1": "abaixo de 18,5",
+      "nivel2": "entre 18,6 e 24,9",
+      "nivel3": "entre 25,0 e 29,9",
+      "nivel4": "entre 30,0 e 34,9",
+      "nivel5": "entre 35,0 e 34,9",
+      "nivel6": "acima de 40"
+    },
+    "imcClassificacao": {
+      "abaixoDoPeso": "Abaixo do peso",
+      "pesoIdeal": "Peso ideal (parabéns)",
+      "levementeAcima": "Levemente acima do peso",
+      "obesidade1": "Obesiade de grau I",
+      "obesidade2": "Obesiade de grau II(Severa)",
+      "obesidade3": "Obesiade III (Mórbida)"
+    },
+    "resultadoMensagens": {
+      "abaixoDoPeso": "Você está abaixo do peso ideal!",
+      "pesoIdeal": "Você está no peso ideal!",
+      "levementeAcima": "Você está levemente acima do peso!",
+      "obesidade1": "Você está com obesiade de grau 1!",
+      "obesidade2": "Você está com obesiade de grau 2(Severa)!",
+      "obesidade3": "Você está com obesiade de grau 3(Mórbida)!"
+    }
+  },
+  "Buttons": {
+    "salvar": "Salvar",
+    "cancelar": "Cancelar"
+  }
+}
