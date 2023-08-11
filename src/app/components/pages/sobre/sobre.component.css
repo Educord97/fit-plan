@@ -1,0 +1,31 @@
+.cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.card {
+    max-width: 400px;
+}
+
+.card-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}
+
+mat-card-content {
+    margin-top: 10px;
+}
+
+h4 {
+    color: #5C4B8B;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+p {
+    color: #68717A;
+    font-size: 16px;
+    line-height: 24px;
+}

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { CommomService } from 'src/app/services/commom-services.service';
 
@@ -8,7 +9,7 @@ import { CommomService } from 'src/app/services/commom-services.service';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  constructor(private commomService: CommomService) {}
+  constructor(private commomService: CommomService, private router: Router) {}
 
   strings: any;
 
@@ -17,4 +18,16 @@ export class NavbarComponent implements OnInit {
       this.strings = data;
     });
   }
+
+  goToSobre(): void {
+    this.router.navigate(['/sobre']);
+  }
+
+  goToTreinos(): void {
+    this.router.navigate(['/treinos']);
+  }
+  isRouteActive(route: string): boolean {
+    return this.router.isActive(route, true);
+  }
+  
 }

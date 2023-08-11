@@ -9,6 +9,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     padding: 40px;
 }
 
+.section-title {
+    display: flex  !important;
+    justify-content: center  !important;
+    font-size: 32px !important;
+    color: #dc8218  !important;
+    font-weight: 600  !important;
+    letter-spacing: 2px  !important;
+}
 
 .p-20 {
     padding: 20px;
