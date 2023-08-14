@@ -45,7 +45,6 @@
 table {
     border-collapse: collapse;
     width: 81%;
-    margin: 20px auto;
     background-color: #fff;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
@@ -77,4 +76,8 @@ tr td:first-child {
 
 .even-listed {
     background-color: #5c4b8b54;
+}
+
+.mt-button {
+    margin-top: 20px;
 }

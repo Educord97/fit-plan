@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
 import { CommomService } from 'src/app/services/commom-services.service';
+import { ImcService } from 'src/app/services/imc.service';
 @Component({
   selector: 'app-imc',
   templateUrl: './imc.component.html',
   styleUrls: ['./imc.component.css'],
 })
 export class ImcComponent implements OnInit {
-  constructor(private commomService: CommomService) {}
+  constructor(private commomService: CommomService, private imcService: ImcService) {}
 
   strings: any;
   peso?: number;
@@ -66,4 +67,30 @@ export class ImcComponent implements OnInit {
       return '';
     }
   }
+
+  salvarResultado() {
+    if (this.peso && this.peso > 0 && this.altura && this.altura > 0) {
+      const imcData = {
+        peso: this.peso,
+        altura: this.altura,
+        imc: this.resultadoIMC,
+        // ... other properties as needed
+      };
+
+      // Call the service to save the IMC data
+      this.imcService.saveIMC(imcData).subscribe(
+        (response) => {
+          console.log('Dados de IMC salvos com sucesso:', response);
+          // Implement any further actions after saving if needed
+        },
+        (error) => {
+          console.error('Erro ao salvar dados de IMC:', error);
+          // Handle error if needed
+        }
+      );
+    } else {
+      console.log('Peso e altura devem ser maiores que zero para salvar.');
+    }
+  }
+
 }
