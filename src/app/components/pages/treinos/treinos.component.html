@@ -1,3 +1,74 @@
-<div class="container">
-    <p>treinos works!</p>
+<div class="container-small">
+    <div>
+        <h3 class="section-title">{{ strings?.Treinos.novoTreino.titulo }}</h3>
+    </div>
+
+    <form class="mt-form" [formGroup]="editForm">
+        <mat-form-field class="mt-full-width">
+            <mat-label>{{ strings?.Treinos.novoTreino.nome }}</mat-label>
+            <input matInput formControlName="aluno">
+        </mat-form-field>
+
+        <mat-form-field class="mt-full-width">
+            <mat-label>{{ strings?.Treinos.novoTreino.objetivoLavel }}</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let objetivo of objetivos" [value]="objetivo.id">
+                    {{ objetivo.nome }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <table mat-table [dataSource]="treinos" class="mat-elevation-z8 demo-table">
+
+            <ng-container matColumnDef="treinos">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> {{
+                    strings?.Treinos.diasDaSemana.nomeTreino }} </th>
+                <td mat-cell *matCellDef="let row">
+
+                    <mat-radio-button color="primary" (click)="$event.stopPropagation()" (change)="selectItem(row)"
+                        [checked]="selection.isSelected(row)">
+                    </mat-radio-button>{{row.nome}}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="segunda">
+                <th mat-header-cell *matHeaderCellDef>{{ strings?.Treinos.diasDaSemana.segunda }}</th>
+                <td mat-cell *matCellDef="let treino">{{treino.diasSemana.segunda}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="terca">
+                <th mat-header-cell *matHeaderCellDef>{{ strings?.Treinos.diasDaSemana.terca }}</th>
+                <td mat-cell *matCellDef="let treino">{{treino.diasSemana.terca}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="quarta">
+                <th mat-header-cell *matHeaderCellDef>{{ strings?.Treinos.diasDaSemana.quarta }}</th>
+                <td mat-cell *matCellDef="let treino">{{treino.diasSemana.quarta}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="quinta">
+                <th mat-header-cell *matHeaderCellDef>{{ strings?.Treinos.diasDaSemana.quinta }}</th>
+                <td mat-cell *matCellDef="let treino">{{treino.diasSemana.quinta}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="sexta">
+                <th mat-header-cell *matHeaderCellDef>{{ strings?.Treinos.diasDaSemana.sexta }}</th>
+                <td mat-cell *matCellDef="let treino">{{treino.diasSemana.sexta}}</td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)"
+                *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </form>
+
+    <div class="footer">
+        <button mat-button (click)="createFromForm()" class="mat-btn-success">
+            Salvar
+        </button>
+
+        <button mat-button (click)="cancelar()" class="mat-btn-danger">
+            Cancelar
+        </button>
+    </div>
 </div>

@@ -22,6 +22,7 @@
       "treino3": "Treino 3"
     },
     "diasDaSemana": {
+      "nomeTreino": "Treinos",
       "segunda": "Segunda-feira",
       "terca": "Terça-feira",
       "quarta": "Quarta-feira",
@@ -45,6 +46,7 @@
     "novoTreino": {
       "titulo": "Novo Treino",
       "nome": "Nome",
+      "objetivoLavel": "objetivo",
       "objetivo": {
         "ganharMassa": "Ganhar Massa Muscular",
         "perderPeso": "Perder peso"
