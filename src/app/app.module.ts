@@ -27,6 +27,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { ResultadosTreinosDialogComponent } from './components/pages/treinos/resultados-treinos-dialog/resultados-treinos-dialog.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     ImcComponent,
     TreinosComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    ResultadosTreinosDialogComponent
   ],
   imports: [
     BrowserModule,

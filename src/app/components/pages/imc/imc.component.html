@@ -7,12 +7,12 @@
     <form class="mt-form">
         <mat-form-field class="mt-30-width">
             <mat-label>{{ strings?.IMC.peso }}</mat-label>
-            <input matInput placeholder="Ex. 82" [(ngModel)]="peso" name="peso" (change)="obterClassificacaoIMC()">
+            <input matInput placeholder="Ex. 82" [(ngModel)]="peso" type="number" name="peso" (change)="obterClassificacaoIMC()">
         </mat-form-field>
 
         <mat-form-field class="mt-30-width">
             <mat-label>{{ strings?.IMC.altura }}</mat-label>
-            <input matInput placeholder="Ex. 184" [(ngModel)]="altura" name="altura" (change)="obterClassificacaoIMC()">
+            <input matInput placeholder="Ex. 184" [(ngModel)]="altura" type="number" name="altura" (change)="obterClassificacaoIMC()">
         </mat-form-field>
 
         <mat-form-field class="mt-full-width">
