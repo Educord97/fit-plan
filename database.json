@@ -1,0 +1,47 @@
+{
+    "treinos": [
+      {
+        "id": 1,
+        "nome": "Treino 1",
+        "diasSemana": {
+          "segunda": "Costas e Ombros",
+          "terca": "Peito e Tríceps",
+          "quarta": "Costas e Ombros",
+          "quinta": "Pernas",
+          "sexta": "Ombros"
+        }
+      },
+      {
+        "id": 2,
+        "nome": "Treino 2",
+        "diasSemana": {
+          "segunda": "Pernas",
+          "terca": "Peito",
+          "quarta": "Tríceps",
+          "quinta": "Bíceps",
+          "sexta": "Costas e Ombros"
+        }
+      },
+      {
+        "id": 3,
+        "nome": "Treino 3",
+        "diasSemana": {
+          "segunda": "Costas e Bíceps",
+          "terca": "Pernas",
+          "quarta": "Ombros",
+          "quinta": "Pernas",
+          "sexta": "Peito e Tríceps"
+        }
+      }
+    ],
+    "objetivos": [
+      {
+        "id": "1",
+        "nome": "Ganhar Massa Muscular"
+      },
+      {
+        "id": "2",
+        "nome": "Perder peso"
+      }
+    ]
+  }
