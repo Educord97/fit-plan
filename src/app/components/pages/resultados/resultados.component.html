@@ -1,0 +1,17 @@
+<div class="content-resultados">
+    <span style="display: flex;height: 30px;margin-bottom: 10px;"><a (click)="openDialog()" class="link-item">{{
+            imcFromParent }}: {{ imcResultado?.imc }}
+            <i class="material-icons" *ngIf="imcResultado">
+                double_arrow
+            </i>
+        </a></span>
+    <span>
+        <h4>{{ intensidadeFromParent }}: </h4>
+    </span>
+    <span>
+        <h4>{{ objetivoFromParent }}: </h4>
+    </span>
+    <span>
+        <h4>{{ avaliacaoEstrelasFromParent }}: </h4>
+    </span>
+</div>

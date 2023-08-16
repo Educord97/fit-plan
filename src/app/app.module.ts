@@ -27,6 +27,11 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { ResultadosTreinosDialogComponent } from './components/pages/treinos/resultados-treinos-dialog/resultados-treinos-dialog.component';
+import { ResultadosComponent } from './components/pages/resultados/resultados.component';
+import { ImcDialogComponent } from './components/pages/imc/imc-dialog/imc-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ImcDeleteDialogComponent } from './components/pages/imc/imc-delete-dialog/imc-delete-dialog.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +41,11 @@ import { MatExpansionModule } from '@angular/material/expansion';
     ImcComponent,
     TreinosComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    ResultadosTreinosDialogComponent,
+    ResultadosComponent,
+    ImcDialogComponent,
+    ImcDeleteDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +64,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatMenuModule,
     MatToolbarModule,
     MatIconModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -16,3 +16,6 @@ mat-toolbar {
 .nav-item:hover {
     color: #DC8218
 }
+.nav-item-selected {
+    color: #DC8218;
+}

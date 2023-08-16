@@ -1,0 +1,34 @@
+.container-all {
+    margin-top: 90px;
+    padding: 40px;
+    display: flex;
+    flex-direction: row;
+    color: #fff;
+}
+
+.container-resultados {
+    width: 300px;
+    background: #5C4B8B;
+    height: 600px;
+    padding: 20px;
+}
+
+.container-treinos {
+    width: 100%;
+    background: #5C4B8B;
+    margin-left: 40px;
+    padding: 20px 30px;
+}
+
+.divider {
+    background-color: #fff;
+    width: 97%;
+    height: 25px;
+    position: absolute;
+    margin-left: -20px;
+    margin-top: -15px;
+}
+
+.content-treinos {
+    margin-top: 35px;
+}
