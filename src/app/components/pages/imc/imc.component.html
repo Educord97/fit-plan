@@ -2,23 +2,23 @@
 
 <div class="container">
     <div>
-        <h3 class="section-title">{{ strings?.IMC.titulo }}</h3>
+        <h3 class="section-title">{{ strings?.IMC?.titulo }}</h3>
     </div>
     <form class="mt-form">
         <mat-form-field class="mt-30-width">
-            <mat-label>{{ strings?.IMC.peso }}</mat-label>
+            <mat-label>{{ strings?.IMC?.peso }}</mat-label>
             <input matInput placeholder="Ex. 82" [(ngModel)]="peso" type="number" name="peso"
                 (change)="obterClassificacaoIMC()">
         </mat-form-field>
 
         <mat-form-field class="mt-30-width">
-            <mat-label>{{ strings?.IMC.altura }}</mat-label>
+            <mat-label>{{ strings?.IMC?.altura }}</mat-label>
             <input matInput placeholder="Ex. 184" [(ngModel)]="altura" type="number" name="altura"
                 (change)="obterClassificacaoIMC()">
         </mat-form-field>
 
         <mat-form-field class="mt-full-width">
-            <mat-label>{{ strings?.IMC.resultadoLabel }}</mat-label>
+            <mat-label>{{ strings?.IMC?.resultadoLabel }}</mat-label>
             <input matInput [(ngModel)]="resultadoIMC" [readonly]="true" [ngModelOptions]="{ standalone: true }">
         </mat-form-field>
 
@@ -29,41 +29,44 @@
                     <th>Classificação</th>
                 </tr>
                 <tr>
-                    <td>{{ strings?.IMC.imcParametros.nivel1 }}</td>
+                    <td>{{ strings?.IMC?.imcParametros?.nivel1 }}</td>
                     <td [ngClass]="{'abaixoDoPeso': abaixoDoPeso === true}">{{
-                        strings?.IMC.imcClassificacao.abaixoDoPeso }}
+                        strings?.IMC?.imcClassificacao?.abaixoDoPeso }}
                     </td>
                 </tr>
                 <tr>
-                    <td>{{ strings?.IMC.imcParametros.nivel2 }}</td>
-                    <td [ngClass]="{'pesoIdeal': pesoIdeal === true}">{{ strings?.IMC.imcClassificacao.pesoIdeal }}</td>
+                    <td>{{ strings?.IMC?.imcParametros?.nivel2 }}</td>
+                    <td [ngClass]="{'pesoIdeal': pesoIdeal === true}">{{ strings?.IMC?.imcClassificacao?.pesoIdeal }}
+                    </td>
                 </tr>
                 <tr>
-                    <td>{{ strings?.IMC.imcParametros.nivel3 }}</td>
+                    <td>{{ strings?.IMC?.imcParametros?.nivel3 }}</td>
                     <td [ngClass]="{'levementeAcima': levementeAcima === true}">{{
-                        strings?.IMC.imcClassificacao.levementeAcima }}</td>
+                        strings?.IMC?.imcClassificacao?.levementeAcima }}</td>
                 </tr>
                 <tr>
-                    <td>{{ strings?.IMC.imcParametros.nivel4 }}</td>
-                    <td [ngClass]="{'obesidade1': obesidade1 === true}">{{ strings?.IMC.imcClassificacao.obesidade1 }}
+                    <td>{{ strings?.IMC?.imcParametros?.nivel4 }}</td>
+                    <td [ngClass]="{'obesidade1': obesidade1 === true}">{{ strings?.IMC?.imcClassificacao?.obesidade1 }}
                     </td>
                 </tr>
                 <tr>
-                    <td>{{ strings?.IMC.imcParametros.nivel5 }}</td>
-                    <td [ngClass]="{'obesidade2': obesidade2 === true}">{{ strings?.IMC.imcClassificacao.obesidade2 }}
+                    <td>{{ strings?.IMC?.imcParametros?.nivel5 }}</td>
+                    <td [ngClass]="{'obesidade2': obesidade2 === true}">{{ strings?.IMC?.imcClassificacao?.obesidade2 }}
                     </td>
                 </tr>
                 <tr>
-                    <td>{{ strings?.IMC.imcParametros.nivel6 }}</td>
-                    <td [ngClass]="{'obesidade3': obesidade3 === true}">{{ strings?.IMC.imcClassificacao.obesidade3 }}
+                    <td>{{ strings?.IMC?.imcParametros?.nivel6 }}</td>
+                    <td [ngClass]="{'obesidade3': obesidade3 === true}">{{ strings?.IMC?.imcClassificacao?.obesidade3 }}
                     </td>
                 </tr>
             </table>
         </div>
 
         <div class="mt-button">
-            <button mat-raised-button  (click)="obterClassificacaoIMC()">Calcular IMC</button>
-            <button mat-raised-button (click)="salvarResultado()">Salvar Resultado</button>
+            <button mat-raised-button class="mat-btn-success" [disabled]="!resultadoIMC"
+                (click)="salvarResultado()">Salvar</button>
+            <button mat-raised-button class="mat-btn-danger" (click)="cancelar()">Cancelar</button>
+            <button mat-raised-button class="mat-btn-primary" (click)="openDialog()">Histórico</button>
         </div>
     </form>
 </div>

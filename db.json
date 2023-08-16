@@ -44,12 +44,5 @@
       "nome": "Perder peso"
     }
   ],
-  "imcResultados": [
-    {
-      "peso": 150,
-      "altura": 122,
-      "imc": 100.8,
-      "id": 1
-    }
-  ]
+  "imcResultados": []
 }

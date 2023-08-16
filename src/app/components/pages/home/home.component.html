@@ -1,14 +1,23 @@
 <div class="container-all">
 
     <div class="container-resultados">
-        <h3 style="text-align: center;"> {{ strings?.HomeResultados.resultados }}</h3>
+        <h3 style="text-align: center;"> 
+            {{ strings?.HomeResultados?.resultados }}</h3>
         <div class="divider"></div>
-        <div class="content-resultados">
-            <span><h4>{{ strings?.HomeResultados.imc }}:  </h4></span>
-        </div>
+        <ng-container *ngIf="imcToParent">
+            <app-resultados  
+            [imcFromParent]="imcToParent"
+            [intensidadeFromParent]="intensidadeToParent"
+            [avaliacaoTreinoFromParent]="avaliacaoTreinoToParent"
+            [avaliacaoEstrelasFromParent]="avaliacaoEstrelasToParent"
+            [objetivoFromParent]="objetivoToParent"
+        ></app-resultados>
+          </ng-container>
+       
     </div>
     <div class="container-treinos">
-        <h3 style="text-align: center;">{{ strings?.Treinos.meusTreinos }}</h3>
+        <h3 style="text-align: center;">{{ strings?.Treinos?.meusTreinos }}</h3>
+
         <div class="content-treinos">
             <h1 class="title-imc">
                 CONTAINER TREINOS <br>
@@ -16,7 +25,9 @@
         
             <h2>Itens atendidos da atividade</h2>
             <ul>
-                <li>Uso de rotas e navegação entre as páginas .</li>
+                <li>Uso de rotas e navegação entre as páginas.</li>
+                <li>Passar dados via hierarquia de componentes, ou seja, usando @Input ou @Output.</li>
+                <li>Passar dados entre componentes que representam diferentes telas via parâmetros de rotas. </li>
             </ul>
         </div>
     </div>

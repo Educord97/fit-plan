@@ -2,7 +2,8 @@ export interface IIMC {
     id?: number;
     peso?: number;
     altura?: number;
-    resultado?: string;
+    imc?: number;
+    resultado?: number;
 
 }
 
@@ -11,6 +12,7 @@ export class IMC implements IIMC {
         public id?: number,
         public peso?: number,
         public altura?: number,
-        public resultado?: string
+        public imc?: number,
+        public resultado?: number
       ) {}
 }

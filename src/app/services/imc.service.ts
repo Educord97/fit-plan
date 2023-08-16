@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable, EMPTY } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { IIMC } from '../models/imc.interface';
 
 type EntityResponseType = HttpResponse<IIMC>;
@@ -15,10 +15,17 @@ export class ImcService {
 
   constructor(private http: HttpClient) {}
 
-  getIMC(): Observable<HttpResponse<IIMC>> {
+  getIMC(): Observable<HttpResponse<IIMC[]>> {
     return this.http
-      .get<IIMC>(`${this.baseUrl}/imc`, { observe: 'response' })
+      .get<IIMC[]>(`${this.baseUrl}/imcResultados`, { observe: 'response' })
       .pipe(catchError((error) => this.errorHandler(error)));
+  }
+
+  read(): Observable<IIMC[]> {
+    return this.http.get<IIMC[]>(this.baseUrl).pipe(
+      map((obj) => obj),
+      catchError((e) => this.errorHandler(e))
+    );
   }
 
   saveIMC(imc: IIMC): Observable<EntityResponseType> {
@@ -27,14 +34,33 @@ export class ImcService {
     });
   }
 
-  findById(id: number): Observable<EntityResponseType> {
-    return this.http.get<IIMC>(`${this.baseUrl}/${id}`, {
-      observe: 'response',
-    });
+  readById(id: number): Observable<IIMC> {
+    const url = `${this.baseUrl}/imcResultados/${id}`;
+    return this.http.get<IIMC>(url).pipe(
+      map((obj) => obj),
+      catchError((e) => this.errorHandler(e))
+    );
   }
 
-  delete(id: number): Observable<HttpResponse<{}>> {
-    return this.http.delete(`${this.baseUrl}/${id}`, { observe: 'response' });
+  readLastImc(): Observable<IIMC | null> {
+    const url = `${this.baseUrl}/imcResultados`;
+    return this.http.get<IIMC[]>(url).pipe(
+      map((imcs) => {
+        if (imcs && imcs.length > 0) {
+          return imcs[imcs.length - 1];
+        }
+        return null;
+      }),
+      catchError((e) => this.errorHandler(e))
+    );
+  }
+
+  delete(id: number): Observable<IIMC> {
+    const url = `${this.baseUrl}/imcResultados/${id}`;
+    return this.http.delete<IIMC>(url).pipe(
+      map((obj) => obj),
+      catchError((e) => this.errorHandler(e))
+    );
   }
 
   errorHandler(e: any): Observable<any> {

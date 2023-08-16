@@ -1,0 +1,17 @@
+.content-resultados {
+    height: 100%;
+    padding-top: 20px;
+}
+
+.link-item {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.link-item:hover {
+    color: #DC8218
+}

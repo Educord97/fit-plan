@@ -1,23 +1,23 @@
 <mat-toolbar class="header mat-elevation-z4">
     <span>
         <div class="text-center section-logo">
-            <a class="nav-item" [class.nav-item-selected]="isRouteActive('/')"  routerLink="/"> {{ strings?.Navbar.logo }} </a>
+            <a class="nav-item" [class.nav-item-selected]="isRouteActive('/')"  routerLink="/"> {{ strings?.Navbar?.logo }} </a>
         </div>
     </span>
    <div class="nav-links-right">
        <span>
            <div class="text-center section-logo p-20" >
-               <a class="fw-200 nav-item" [class.nav-item-selected]="isRouteActive('/treinos')" (click)="goToTreinos()" style="cursor: pointer;"> {{ strings?.Navbar.treinos }} </a>
+               <a class="fw-200 nav-item" [class.nav-item-selected]="isRouteActive('/treinos')" (click)="goToTreinos()" style="cursor: pointer;"> {{ strings?.Navbar?.treinos }} </a>
            </div>
        </span>
        <span>
            <div class="text-center section-logo p-20">
-               <a class="fw-200 nav-item"  [class.nav-item-selected]="isRouteActive('/imc')" routerLink="/imc"> {{ strings?.Navbar.tabelaIMC }} </a>
+               <a class="fw-200 nav-item"  [class.nav-item-selected]="isRouteActive('/imc')" routerLink="/imc"> {{ strings?.Navbar?.tabelaIMC }} </a>
            </div>
        </span>
        <span>
            <div class="text-center section-logo p-20">
-               <a class="fw-200 nav-item"  [class.nav-item-selected]="isRouteActive('/sobre')" (click)="goToSobre()" style="cursor: pointer;"> {{ strings?.Navbar.sobre }} </a>
+               <a class="fw-200 nav-item"  [class.nav-item-selected]="isRouteActive('/sobre')" (click)="goToSobre()" style="cursor: pointer;"> {{ strings?.Navbar?.sobre }} </a>
            </div>
        </span>
    </div>
