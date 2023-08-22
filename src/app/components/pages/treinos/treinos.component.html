@@ -6,28 +6,48 @@
     <form class="mt-form" [formGroup]="editForm">
         <mat-form-field class="mt-full-width">
             <mat-label>{{ strings?.Treinos.novoTreino.nome }}</mat-label>
-            <input matInput formControlName="aluno">
+            <input matInput formControlName="nome">
+            <mat-error *ngIf="editForm.get('nome')?.hasError('required') && editForm.get('nome')?.touched">
+                Campo obrigatório.
+            </mat-error>
+            <mat-error *ngIf="editForm.get('nome')?.hasError('maxlength') && editForm.get('nome')?.touched">
+                O nome deve ter no máximo 255 caracteres.
+            </mat-error>
         </mat-form-field>
 
         <mat-form-field class="mt-full-width">
             <mat-label>{{ strings?.Treinos.novoTreino.objetivoLavel }}</mat-label>
-            <mat-select>
-                <mat-option *ngFor="let objetivo of objetivos" [value]="objetivo.id">
+            <mat-select formControlName="objetivo" [compareWith]="compareObjetivos">
+                <mat-option *ngFor="let objetivo of objetivos" [value]="objetivo">
                     {{ objetivo.nome }}
                 </mat-option>
             </mat-select>
+            <mat-error *ngIf="editForm.get('objetivo')?.hasError('required') && editForm.get('objetivo')?.touched">
+                Selecione um objetivo.
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="mt-full-width">
+            <mat-label>{{ strings?.Treinos.novoTreino.intensidadeLabel }}</mat-label>
+            <mat-select formControlName="intensidade" [compareWith]="compareObjetivos">
+                <mat-option *ngFor="let intensidade of intensidades" [value]="intensidade">
+                    {{ intensidade.nome }}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="editForm.get('intensidade')?.hasError('required') && editForm.get('intensidade')?.touched">
+                Selecione uma intensidade.
+            </mat-error>
         </mat-form-field>
 
         <table mat-table [dataSource]="treinos" class="mat-elevation-z8 demo-table">
 
             <ng-container matColumnDef="treinos">
-                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> {{
-                    strings?.Treinos.diasDaSemana.nomeTreino }} </th>
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;">{{
+                    strings?.Treinos.diasDaSemana.nomeTreino }}</th>
                 <td mat-cell *matCellDef="let row">
-
-                    <mat-radio-button color="primary" (click)="$event.stopPropagation()" (change)="selectItem(row)"
-                        [checked]="selection.isSelected(row)">
-                    </mat-radio-button>{{row.nome}}
+                    <mat-radio-button color="primary" [value]="row" (click)="$event.stopPropagation()"
+                        (change)="radioControl.setValue(row)" [checked]="radioControl.value === row">
+                    </mat-radio-button>{{ row.nome }}
                 </td>
             </ng-container>
 
@@ -63,12 +83,14 @@
     </form>
 
     <div class="footer">
-        <button mat-button (click)="createFromForm()" class="mat-btn-success">
+        <button mat-button [disabled]="isSaveButtonDisabled()"
+            [ngClass]="{'custom-disabled-button': isSaveButtonDisabled()}" (click)="save()" class="mat-btn-success">
             Salvar
         </button>
 
         <button mat-button (click)="cancelar()" class="mat-btn-danger">
             Cancelar
         </button>
+        <button mat-raised-button class="mat-btn-primary" (click)="openDialog()">Meus treinos</button>
     </div>
 </div>

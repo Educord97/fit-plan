@@ -3,8 +3,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable, EMPTY } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-import { Objetivo } from '../components/models/objetivo.model';
+import { IObjetivo } from '../components/models/objetivo.model';
 import { ITreino, Treino } from '../components/models/treino.model';
+import { IIntensidade } from '../components/models/intensidade.model';
 
 type EntityResponseType = HttpResponse<ITreino>;
 
@@ -16,9 +17,15 @@ export class TreinosService {
 
   constructor(private http: HttpClient) {}
 
-  getObjetivos(): Observable<HttpResponse<Objetivo[]>> {
+  getObjetivos(): Observable<HttpResponse<IObjetivo[]>> {
     return this.http
-      .get<Objetivo[]>(`${this.baseUrl}/objetivos`, { observe: 'response' })
+      .get<IObjetivo[]>(`${this.baseUrl}/objetivos`, { observe: 'response' })
+      .pipe(catchError((error) => this.errorHandler(error)));
+  }
+
+  getIntensidades(): Observable<HttpResponse<IIntensidade[]>> {
+    return this.http
+      .get<IIntensidade[]>(`${this.baseUrl}/intensidades`, { observe: 'response' })
       .pipe(catchError((error) => this.errorHandler(error)));
   }
 
@@ -28,19 +35,53 @@ export class TreinosService {
       .pipe(catchError((error) => this.errorHandler(error)));
   }
 
-  createTreino(treino: ITreino): Observable<EntityResponseType> {
-    return this.http.post<ITreino>(`${this.baseUrl}/treinos`, treino, {
-      observe: 'response',
-    });
+  getTreinosCriados(): Observable<HttpResponse<Treino[]>> {
+    return this.http
+      .get<Treino[]>(`${this.baseUrl}/treinos-criados`, { observe: 'response' })
+      .pipe(catchError((error) => this.errorHandler(error)));
   }
-  findById(id: number): Observable<EntityResponseType> {
-    return this.http.get<ITreino>(`${this.baseUrl}/${id}`, {
+
+  createTreino(treino: ITreino): Observable<EntityResponseType> {
+    return this.http.post<ITreino>(`${this.baseUrl}/treinos-criados`, treino, {
       observe: 'response',
     });
   }
 
-  delete(id: number): Observable<HttpResponse<{}>> {
-    return this.http.delete(`${this.baseUrl}/${id}`, { observe: 'response' });
+  readById(id: number): Observable<ITreino> {
+    const url = `${this.baseUrl}/treinos-criados/${id}`;
+    return this.http.get<ITreino>(url).pipe(
+      map((obj) => obj),
+      catchError((e) => this.errorHandler(e))
+    );
+  }
+
+  update(treino: ITreino): Observable<ITreino> {
+    const url = `${this.baseUrl}/treinos-criados/${treino.id}`;
+    return this.http.put<ITreino>(url, treino).pipe(
+      map((obj) => obj),
+      catchError((e) => this.errorHandler(e))
+    );
+  }
+
+  readLastIntensidadeByTreino(): Observable<ITreino | null> {
+    const url = `${this.baseUrl}/treinos-criados`;
+    return this.http.get<ITreino[]>(url).pipe(
+      map((intensidade) => {
+        if (intensidade && intensidade.length > 0) {
+          return intensidade[intensidade.length - 1];
+        }
+        return null;
+      }),
+      catchError((e) => this.errorHandler(e))
+    );
+  }
+
+  delete(id: number): Observable<ITreino> {
+    const url = `${this.baseUrl}/treinos-criados/${id}`;
+    return this.http.delete<ITreino>(url).pipe(
+      map((obj) => obj),
+      catchError((e) => this.errorHandler(e))
+    );
   }
 
   errorHandler(e: any): Observable<any> {

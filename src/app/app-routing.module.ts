@@ -5,7 +5,9 @@ import { HomeComponent } from './components/pages/home/home.component';
 import { ImcComponent } from './components/pages/imc/imc.component';
 import { SobreComponent } from './components/pages/sobre/sobre.component';
 import { TreinosComponent } from './components/pages/treinos/treinos.component';
-import { ImcDeleteDialogComponent } from './components/pages/imc/imc-delete-dialog/imc-delete-dialog.component';
+import { ImcDeleteComponent } from './components/pages/imc/imc-delete/imc-delete.component';
+import { TreinosDeleteComponent } from './components/pages/treinos/treinos-delete/treino-delete.component';
+import { TreinosUpdateComponent } from './components/pages/treinos/treinos-update/treinos-update.component';
 
 const routes: Routes = [
   {
@@ -26,7 +28,15 @@ const routes: Routes = [
   },
   {
     path: "imcs/delete/:id",
-    component: ImcDeleteDialogComponent
+    component: ImcDeleteComponent
+  },
+  {
+    path: "treinos-criados/update/:id",
+    component: TreinosUpdateComponent
+  },
+  {
+    path: "treinos-criados/delete/:id",
+    component: TreinosDeleteComponent
   },
 ];
 

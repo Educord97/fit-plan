@@ -53,6 +53,8 @@
     },
     "novoTreino": {
       "titulo": "Novo Treino",
+      "id": "ID",
+      "intensidadeLabel": "Intensidade",
       "nome": "Nome",
       "objetivoLavel": "objetivo",
       "objetivo": {
@@ -108,7 +110,8 @@
     }
   },
   "DeleteDialog": {
-    "title": "Excluir IMC"
+    "title": "Excluir IMC",
+    "titleTreino": "Excluir Treino"
   },
   "Buttons": {
     "salvar": "Salvar",

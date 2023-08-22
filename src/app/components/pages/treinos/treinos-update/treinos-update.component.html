@@ -1,0 +1,27 @@
+<div class="container card-update">
+    <mat-card>
+        <mat-card-title>Alterar Treino</mat-card-title>
+        <form>
+            <mat-form-field>
+                <mat-label>ID:</mat-label>
+                <input matInput placeholder="ID" readonly
+                    [(ngModel)]="treino.id" name="id">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Nome:</mat-label>
+                <input matInput placeholder="Nome"
+                    [(ngModel)]="treino.nome" name="name">
+            </mat-form-field>
+        </form>
+    
+        <div class="mt-button">
+            <button mat-raised-button class="mat-btn-danger" (click)="updateTreino()">
+                Atualizar
+            </button>
+            
+            <button mat-raised-button class="mat-btn-primary" (click)="cancelar()">
+                Cancelar
+            </button>
+        </div>
+    </mat-card>
+</div>

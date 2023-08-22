@@ -7,10 +7,10 @@ import { ImcService } from 'src/app/services/imc.service';
 
 @Component({
   selector: 'app-imc-delete-dialog',
-  templateUrl: './imc-delete-dialog.component.html',
-  styleUrls: ['./imc-delete-dialog.component.css'],
+  templateUrl: './imc-delete.component.html',
+  styleUrls: ['./imc-delete.component.css'],
 })
-export class ImcDeleteDialogComponent {
+export class ImcDeleteComponent {
   imc?: IIMC;
   strings?: PtBRStrings;
 

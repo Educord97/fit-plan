@@ -3,12 +3,16 @@ import { Component, OnInit } from '@angular/core';
 import { CommomService } from 'src/app/services/commom-services.service';
 import { TreinosService } from 'src/app/services/treinos.service';
 import { ITreino, Treino } from '../../models/treino.model';
-import { Objetivo } from '../../models/objetivo.model';
+import { IObjetivo } from '../../models/objetivo.model';
 import { HttpResponse } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
-import {SelectionModel} from '@angular/cdk/collections';
-import { FormBuilder, Validators } from '@angular/forms';
+import { SelectionModel } from '@angular/cdk/collections';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { TreinosDialogComponent } from './treinos-dialog/treinos-dialog.component';
+import { IIntensidade } from '../../models/intensidade.model';
 
 @Component({
   selector: 'app-treinos',
@@ -19,47 +23,74 @@ export class TreinosComponent implements OnInit {
   constructor(
     private commomService: CommomService,
     private treinoService: TreinosService,
-    private fb: FormBuilder
-  ) {
-  }
+    private fb: FormBuilder,
+    private router: Router,
+    public dialog: MatDialog
+  ) {}
 
   strings: any;
   treinos: Treino[] = [];
-  objetivos?: Objetivo[] = [];
+  objetivos?: IObjetivo[] = [];
+  intensidades?: IIntensidade[] = [];
 
   selection = new SelectionModel<Treino>(false, []);
   selectedItem = <Treino>{};
 
-  displayedColumns: string[] = ['treinos','segunda', 'terca', 'quarta', 'quinta', 'sexta'];
+  displayedColumns: string[] = [
+    'treinos',
+    'segunda',
+    'terca',
+    'quarta',
+    'quinta',
+    'sexta',
+  ];
   clickedRows = new Set<Treino>();
+
+  radioControl = new FormControl(); // FormControl para os botões de rádio
 
   editForm = this.fb.group({
     id: [],
-    aluno: [null, [Validators.maxLength(255)]]
+    nome: [null, [Validators.required, Validators.maxLength(255)]],
+    objetivo: [null, Validators.required],
+    intensidade: [null, Validators.required],
   });
 
   ngOnInit() {
-   this.readTreinos();
-   this.readObjetivos();
-   this.readStrings();
+    this.readTreinos();
+    this.readObjetivos();
+    this.readIntensidades()
+    this.readStrings();
   }
 
+  isSaveButtonDisabled(): boolean {
+    return this.editForm.invalid || !this.radioControl.value;
+  }
 
+  isRadioSelected(): boolean {
+    return !!this.radioControl.value;
+  }
 
   save(): void {
     const treino = this.createFromForm();
-      this.subscribeToSaveResponse(this.treinoService.createTreino(treino));
+    this.subscribeToSaveResponse(this.treinoService.createTreino(treino));
+    console.log(treino)
   }
 
-   createFromForm(): Treino {
+  createFromForm(): Treino {
     return {
       ...new Treino(),
       id: this.editForm.get(['id'])!.value,
-      aluno: this.editForm.get(['aluno'])!.value,
+      nome: this.editForm.get(['nome'])!.value,
+      objetivos: [this.editForm.get(['objetivo'])!.value],
+      intensidades: [this.editForm.get(['intensidade'])!.value],
+      selected: this.radioControl.value,
     };
+
   }
 
-  protected subscribeToSaveResponse(result: Observable<HttpResponse<ITreino>>): void {
+  protected subscribeToSaveResponse(
+    result: Observable<HttpResponse<ITreino>>
+  ): void {
     result.subscribe(
       () => this.onSaveSuccess(),
       () => this.onSaveError()
@@ -67,32 +98,41 @@ export class TreinosComponent implements OnInit {
   }
 
   protected onSaveSuccess(): void {
-    console.log("CRIADO COM SUCESSO")
+    console.log('CRIADO COM SUCESSO');
   }
 
   protected onSaveError(): void {
-    console.log("ERRO!!!")
+    console.log('ERRO!!!');
   }
+
+  compareObjetivos(objetivo1: IObjetivo, objetivo2: IObjetivo): boolean {
+    return objetivo1 && objetivo2
+      ? objetivo1.id === objetivo2.id
+      : objetivo1 === objetivo2;
+  }
+
   readTreinos(): void {
     this.treinoService.getTreinos().subscribe((res: HttpResponse<Treino[]>) => {
       this.treinos = res.body || [];
-      console.log(this.treinos)
+      console.log(this.treinos);
     });
   }
 
   readObjetivos(): void {
-    this.treinoService.getObjetivos().subscribe((res: HttpResponse<Objetivo[]>) => {
+    this.treinoService
+      .getObjetivos()
+      .subscribe((res: HttpResponse<IObjetivo[]>) => {
         this.objetivos = res.body || [];
-    })
+      });
   }
 
-  criarTreino() {
- 
-  }
-
-  selecionarObjetivo(event: any) {
-    const idSelecionado = event.target.value;
-    console.log('Objetivo selecionado:', idSelecionado);
+  readIntensidades(): void {
+    this.treinoService
+      .getIntensidades()
+      .subscribe((res: HttpResponse<IIntensidade[]>) => {
+        this.intensidades = res.body || [];
+        console.log('INTENSIDADES: ' + this.intensidades)
+      });
   }
 
   readStrings(): void {
@@ -100,18 +140,18 @@ export class TreinosComponent implements OnInit {
       this.strings = data;
     });
   }
-  
+
   selectItem(row: Treino) {
     this.selection.toggle(row);
     this.selectedItem = row;
-    console.log(this.selectedItem)
+    console.log(this.selectedItem);
   }
 
-  onRadioChange(rowIndex: number): void {
-    console.log('Linha selecionada:', this.treinos[rowIndex]);
+  openDialog() {
+    this.dialog.open(TreinosDialogComponent);
   }
+
   cancelar(): void {
-
+    this.router.navigate(['']);
   }
-  
 }
