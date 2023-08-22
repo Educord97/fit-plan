@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PtBRStrings } from 'src/app/models/pt-br.interface';
 import { CommomService } from 'src/app/services/commom-services.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class FooterComponent implements OnInit {
 
   constructor(private commomService: CommomService) {}
 
-  strings: any;
+  strings?: PtBRStrings;
 
   ngOnInit() {
     this.commomService.getStrings().subscribe((data) => {

@@ -8,10 +8,18 @@
   "HomeResultados": {
     "resultados": "Meus resultados",
     "imc": "IMC",
-    "intensidade": {
+    "objetivoLabel": "Objetivo",
+    "intensidadeLabel": "Intensidade",
+    "intensidadeLevels": {
       "intensidadeLeve": "Treino Leve",
       "intensidadeMedio": "Treino Médio",
       "intensidadePesado": "Treino Pesado"
+    },
+    "avaliacaoLabel": "Avaliação",
+    "avaliacaoLevels": {
+      "avaliacaoRuim": "Ruim",
+      "avaliacaoBom": "Bom",
+      "avaliacaoOtimo": "Ótimo"
     }
   },
   "Treinos": {
@@ -69,6 +77,7 @@
     }
   },
   "IMC": {
+    "imcLabel": "IMC",
     "titulo": "Tabela IMC",
     "peso": "Peso (kg)",
     "altura": "Altura (cm)",
@@ -98,8 +107,12 @@
       "obesidade3": "Você está com obesiade de grau 3(Mórbida)!"
     }
   },
+  "DeleteDialog": {
+    "title": "Excluir IMC"
+  },
   "Buttons": {
     "salvar": "Salvar",
-    "cancelar": "Cancelar"
+    "cancelar": "Cancelar",
+    "excluir": "Excluir"
   }
 }

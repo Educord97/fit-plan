@@ -1,15 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
+import { PtBRStrings } from 'src/app/models/pt-br.interface';
 
 import { CommomService } from 'src/app/services/commom-services.service';
+import { ImcService } from 'src/app/services/imc.service';
+import { ImcDialogComponent } from './imc-dialog/imc-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+
 @Component({
   selector: 'app-imc',
   templateUrl: './imc.component.html',
   styleUrls: ['./imc.component.css'],
 })
 export class ImcComponent implements OnInit {
-  constructor(private commomService: CommomService) {}
+  @Output() resultadoIMCChange = new EventEmitter<number | string>();
 
-  strings: any;
+  constructor(
+    private commomService: CommomService,
+    private imcService: ImcService,
+    private router: Router,
+    public dialog: MatDialog
+  ) {}
+
+  strings?: PtBRStrings;
   peso?: number;
   altura?: number;
   resultadoIMC?: number;
@@ -22,6 +35,10 @@ export class ImcComponent implements OnInit {
   resultadoExibido: boolean = false;
 
   ngOnInit() {
+    this.loadStrings();
+  }
+
+  loadStrings(): void {
     this.commomService.getStrings().subscribe((data) => {
       this.strings = data;
     });
@@ -37,12 +54,7 @@ export class ImcComponent implements OnInit {
       this.resultadoExibido = false;
     }
 
-    this.abaixoDoPeso = false;
-    this.pesoIdeal = false;
-    this.levementeAcima = false;
-    this.obesidade1 = false;
-    this.obesidade2 = false;
-    this.obesidade3 = false;
+    this.clearTableResults();
 
     if (this.resultadoIMC < 18.5 && this.resultadoExibido === true) {
       this.abaixoDoPeso = true;
@@ -65,5 +77,62 @@ export class ImcComponent implements OnInit {
     } else {
       return '';
     }
+  }
+
+  clearTableResults(): void {
+    this.abaixoDoPeso = false;
+    this.pesoIdeal = false;
+    this.levementeAcima = false;
+    this.obesidade1 = false;
+    this.obesidade2 = false;
+    this.obesidade3 = false;
+  }
+
+  clearFields(): void {
+    this.peso = undefined;
+    this.altura = undefined;
+    this.resultadoIMC = undefined;
+    this.abaixoDoPeso = false;
+    this.pesoIdeal = false;
+    this.levementeAcima = false;
+    this.obesidade1 = false;
+    this.obesidade2 = false;
+    this.obesidade3 = false;
+  }
+
+  salvarResultado() {
+    if (this.peso && this.peso > 0 && this.altura && this.altura > 0) {
+      const imcData = {
+        peso: this.peso,
+        altura: this.altura,
+        imc: this.resultadoIMC,
+      };
+
+      this.imcService.saveIMC(imcData).subscribe(
+        (response) => {
+          this.commomService.showMessage('IMC adicionado!');
+          console.log('Dados de IMC salvos com sucesso:', response);
+          this.clearFields();
+        },
+        (error) => {
+          this.commomService.showMessage('IMC não adicionado!');
+          console.error('Erro ao salvar dados de IMC:', error);
+        }
+      );
+    } else {
+      this.commomService.showMessage(
+        'Peso e altura devem ser maiores que zero para salvar.'
+      );
+    }
+    this.resultadoIMCChange.emit(this.resultadoIMC);
+    this.router.navigate(['/imc']);
+  }
+
+  openDialog() {
+    this.dialog.open(ImcDialogComponent);
+  }
+
+  cancelar(): void {
+    this.router.navigate(['']);
   }
 }

@@ -45,7 +45,6 @@
 table {
     border-collapse: collapse;
     width: 81%;
-    margin: 20px auto;
     background-color: #fff;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
@@ -77,4 +76,26 @@ tr td:first-child {
 
 .even-listed {
     background-color: #5c4b8b54;
+}
+
+.mt-button {
+    width: 81%;
+    margin-top: 20px;
+}
+
+.mat-btn-success {
+    color: green !important;
+    border: 1px solid green !important;
+}
+
+.mat-btn-danger {
+    margin-left: 10px;
+    color: rgb(226, 12, 12) !important;
+    border: 1px solid rgb(226, 12, 12) !important;
+}
+
+.mat-btn-primary {
+    color: rgb(81, 61, 196) !important;
+    border: 1px solid rgb(81, 61, 196) !important;
+    float: right;
 }

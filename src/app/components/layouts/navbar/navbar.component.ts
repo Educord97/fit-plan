@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PtBRStrings } from 'src/app/models/pt-br.interface';
 
 import { CommomService } from 'src/app/services/commom-services.service';
 
@@ -11,7 +12,7 @@ import { CommomService } from 'src/app/services/commom-services.service';
 export class NavbarComponent implements OnInit {
   constructor(private commomService: CommomService, private router: Router) {}
 
-  strings: any;
+  strings?: PtBRStrings;
 
   ngOnInit() {
     this.commomService.getStrings().subscribe((data) => {

@@ -1,0 +1,24 @@
+<div class="container card-delete">
+    <mat-card>
+        <mat-card-title>{{ strings?.DeleteDialog?.title }}</mat-card-title>
+        <form *ngIf="imc">
+            <mat-form-field>
+                <mat-label>{{ strings?.IMC?.peso }}</mat-label>
+                <input matInput placeholder="Peso" [value]="imc.peso" name="peso" disabled>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>{{ strings?.IMC?.altura }}</mat-label>
+                <input matInput placeholder="Altura (cm)" [value]="imc.altura" name="altura" disabled>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>{{ strings?.IMC?.imcLabel }}</mat-label>
+                <input matInput placeholder="Altura (cm)" [value]="imc.imc" name="imc" disabled>
+            </mat-form-field>
+        </form>
+
+        <div class="mt-button">
+            <button mat-raised-button class="mat-btn-danger" (click)="deleteImc()">{{ strings?.Buttons?.excluir}}</button>
+            <button mat-raised-button class="mat-btn-primary" (click)="cancel()">{{ strings?.Buttons?.cancelar }}</button>
+        </div>
+    </mat-card>
+</div>
