@@ -13,7 +13,7 @@ https://educord97.github.io/fit-plan/
 
 https://www.figma.com/file/dYKENVTHs9dSy6nyTfbjgr/FitPlan?type=design&node-id=0%3A1&mode=design&t=2drLqpzic2dV1xSo-1
 
-## Checklist
+## Checklist 
 
 - [x] Criar o repositório no GitHub com a estrutura do Gitflow, ou seja, branches main e develop.
 - [x] Usar componentes de algum framework CSS (Bootstrap, Materialize ou outro)
