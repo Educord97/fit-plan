@@ -3,12 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "parcel index.html",
-    "build:parcel": "parcel build index.html --public-url /fit-plan",
-    "build": "npm run clean:windows && npm run build:parcel",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
-    "clean:windows": "rd /s/q dist",
+    "start": "ng serve",
+    "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

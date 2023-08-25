@@ -1,0 +1,23 @@
+<div class="container card-delete">
+    <mat-card>
+        <mat-card-title>{{ strings?.DeleteDialog?.titleTreino }}</mat-card-title>
+        <form *ngIf="treino && treino.objetivos && treino.intensidades">
+            <mat-form-field>
+                <mat-label>{{ strings?.Treinos?.novoTreino?.id }}</mat-label>
+                <input matInput placeholder="Peso" [value]="treino.id" name="nome" disabled>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>{{ strings?.Treinos?.novoTreino?.nome }}</mat-label>
+                <input matInput placeholder="Peso" [value]="treino.nome" name="nome" disabled>
+            </mat-form-field>
+        </form>
+
+        <div class="mt-button">
+            <button mat-raised-button class="mat-btn-danger" (click)="deleteTreino()">{{
+                strings?.Buttons?.excluir}}</button>
+            <button mat-raised-button class="mat-btn-primary" (click)="cancel()">{{ strings?.Buttons?.cancelar
+                }}</button>
+        </div>
+    </mat-card>
+</div>

@@ -1,3 +1,96 @@
-<div class="container">
-    <p>treinos works!</p>
+<div class="container-small">
+    <div>
+        <h3 class="section-title">{{ strings?.Treinos.novoTreino.titulo }}</h3>
+    </div>
+
+    <form class="mt-form" [formGroup]="editForm">
+        <mat-form-field class="mt-full-width">
+            <mat-label>{{ strings?.Treinos.novoTreino.nome }}</mat-label>
+            <input matInput formControlName="nome">
+            <mat-error *ngIf="editForm.get('nome')?.hasError('required') && editForm.get('nome')?.touched">
+                Campo obrigatório.
+            </mat-error>
+            <mat-error *ngIf="editForm.get('nome')?.hasError('maxlength') && editForm.get('nome')?.touched">
+                O nome deve ter no máximo 255 caracteres.
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="mt-full-width">
+            <mat-label>{{ strings?.Treinos.novoTreino.objetivoLavel }}</mat-label>
+            <mat-select formControlName="objetivo" [compareWith]="compareObjetivos">
+                <mat-option *ngFor="let objetivo of objetivos" [value]="objetivo">
+                    {{ objetivo.nome }}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="editForm.get('objetivo')?.hasError('required') && editForm.get('objetivo')?.touched">
+                Selecione um objetivo.
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="mt-full-width">
+            <mat-label>{{ strings?.Treinos.novoTreino.intensidadeLabel }}</mat-label>
+            <mat-select formControlName="intensidade" [compareWith]="compareObjetivos">
+                <mat-option *ngFor="let intensidade of intensidades" [value]="intensidade">
+                    {{ intensidade.nome }}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="editForm.get('intensidade')?.hasError('required') && editForm.get('intensidade')?.touched">
+                Selecione uma intensidade.
+            </mat-error>
+        </mat-form-field>
+
+        <table mat-table [dataSource]="treinos" class="mat-elevation-z8 demo-table">
+
+            <ng-container matColumnDef="treinos">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;">{{
+                    strings?.Treinos.diasDaSemana.nomeTreino }}</th>
+                <td mat-cell *matCellDef="let row">
+                    <mat-radio-button color="primary" [value]="row" (click)="$event.stopPropagation()"
+                        (change)="radioControl.setValue(row)" [checked]="radioControl.value === row">
+                    </mat-radio-button>{{ row.nome }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="segunda">
+                <th mat-header-cell *matHeaderCellDef>{{ strings?.Treinos.diasDaSemana.segunda }}</th>
+                <td mat-cell *matCellDef="let treino">{{treino.diasSemana.segunda}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="terca">
+                <th mat-header-cell *matHeaderCellDef>{{ strings?.Treinos.diasDaSemana.terca }}</th>
+                <td mat-cell *matCellDef="let treino">{{treino.diasSemana.terca}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="quarta">
+                <th mat-header-cell *matHeaderCellDef>{{ strings?.Treinos.diasDaSemana.quarta }}</th>
+                <td mat-cell *matCellDef="let treino">{{treino.diasSemana.quarta}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="quinta">
+                <th mat-header-cell *matHeaderCellDef>{{ strings?.Treinos.diasDaSemana.quinta }}</th>
+                <td mat-cell *matCellDef="let treino">{{treino.diasSemana.quinta}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="sexta">
+                <th mat-header-cell *matHeaderCellDef>{{ strings?.Treinos.diasDaSemana.sexta }}</th>
+                <td mat-cell *matCellDef="let treino">{{treino.diasSemana.sexta}}</td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row (click)="clickedRows.add(row)" [class.demo-row-is-clicked]="clickedRows.has(row)"
+                *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </form>
+
+    <div class="footer">
+        <button mat-button [disabled]="isSaveButtonDisabled()"
+            [ngClass]="{'custom-disabled-button': isSaveButtonDisabled()}" (click)="save()" class="mat-btn-success">
+            Salvar
+        </button>
+
+        <button mat-button (click)="cancelar()" class="mat-btn-danger">
+            Cancelar
+        </button>
+        <button mat-raised-button class="mat-btn-primary" (click)="openDialog()">Meus treinos</button>
+    </div>
 </div>

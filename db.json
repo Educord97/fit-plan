@@ -34,6 +34,89 @@
       }
     }
   ],
+  "treinos-criados": [
+    {
+      "id": 1,
+      "nome": "Treino CARAMBA",
+      "objetivos": [
+        {
+          "id": "2",
+          "nome": "Perder peso"
+        }
+      ],
+      "intensidades": [
+        {
+          "id": "2",
+          "nome": "Média"
+        }
+      ],
+      "selected": {
+        "id": 3,
+        "nome": "Treino 3",
+        "diasSemana": {
+          "segunda": "Costas e Bíceps",
+          "terca": "Pernas",
+          "quarta": "Ombros",
+          "quinta": "Pernas",
+          "sexta": "Peito e Tríceps"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "nome": "ULTIMO TREINO",
+      "objetivos": [
+        {
+          "id": "1",
+          "nome": "Ganhar Massa Muscular"
+        }
+      ],
+      "intensidades": [
+        {
+          "id": "2",
+          "nome": "Média"
+        }
+      ],
+      "selected": {
+        "id": 1,
+        "nome": "Treino 1",
+        "diasSemana": {
+          "segunda": "Costas e Ombros",
+          "terca": "Peito e Tríceps",
+          "quarta": "Costas e Ombros",
+          "quinta": "Pernas",
+          "sexta": "Ombros"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "nome": "esta",
+      "objetivos": [
+        {
+          "id": "1",
+          "nome": "Ganhar Massa Muscular"
+        }
+      ],
+      "intensidades": [
+        {
+          "id": "1",
+          "nome": "Leve"
+        }
+      ],
+      "selected": {
+        "id": 1,
+        "nome": "Treino 1",
+        "diasSemana": {
+          "segunda": "Costas e Ombros",
+          "terca": "Peito e Tríceps",
+          "quarta": "Costas e Ombros",
+          "quinta": "Pernas",
+          "sexta": "Ombros"
+        }
+      }
+    }
+  ],
   "objetivos": [
     {
       "id": "1",
@@ -44,5 +127,32 @@
       "nome": "Perder peso"
     }
   ],
-  "imcResultados": []
+  "intensidades": [
+    {
+      "id": "1",
+      "nome": "Leve"
+    },
+    {
+      "id": "2",
+      "nome": "Média"
+    },
+    {
+      "id": "3",
+      "nome": "Pesada"
+    }
+  ],
+  "imcResultados": [
+    {
+      "peso": 79,
+      "altura": 184,
+      "imc": 23.3,
+      "id": 1
+    },
+    {
+      "peso": 150,
+      "altura": 188,
+      "imc": 42.4,
+      "id": 2
+    }
+  ]
 }

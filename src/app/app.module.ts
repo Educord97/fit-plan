@@ -13,6 +13,7 @@ import { TreinosComponent } from './components/pages/treinos/treinos.component';
 import { NavbarComponent } from './components/layouts/navbar/navbar.component';
 import { FooterComponent } from './components/layouts/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms'; 
 
 // Angular Material
 import { MatInputModule } from '@angular/material/input';
@@ -27,11 +28,16 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { ResultadosTreinosDialogComponent } from './components/pages/treinos/resultados-treinos-dialog/resultados-treinos-dialog.component';
+import {MatSelectModule} from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
+import { TreinosDialogComponent } from './components/pages/treinos/treinos-dialog/treinos-dialog.component';
 import { ResultadosComponent } from './components/pages/resultados/resultados.component';
 import { ImcDialogComponent } from './components/pages/imc/imc-dialog/imc-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
-import { ImcDeleteDialogComponent } from './components/pages/imc/imc-delete-dialog/imc-delete-dialog.component';
+import { ImcDeleteComponent } from './components/pages/imc/imc-delete/imc-delete.component';
+import { TreinosDeleteComponent } from './components/pages/treinos/treinos-delete/treino-delete.component';
+import { TreinosUpdateComponent } from './components/pages/treinos/treinos-update/treinos-update.component';
 
 @NgModule({
   declarations: [
@@ -42,14 +48,17 @@ import { ImcDeleteDialogComponent } from './components/pages/imc/imc-delete-dial
     TreinosComponent,
     NavbarComponent,
     FooterComponent,
-    ResultadosTreinosDialogComponent,
+    TreinosDialogComponent,
     ResultadosComponent,
     ImcDialogComponent,
-    ImcDeleteDialogComponent
+    ImcDeleteComponent,
+    TreinosDeleteComponent,
+    TreinosUpdateComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -65,6 +74,9 @@ import { ImcDeleteDialogComponent } from './components/pages/imc/imc-delete-dial
     MatToolbarModule,
     MatIconModule,
     MatExpansionModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatRadioModule,
     MatDialogModule
   ],
   providers: [],

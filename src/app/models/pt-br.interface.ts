@@ -53,6 +53,7 @@ export interface PtBRStrings {
     novoTreino: {
       titulo: string;
       nome: string;
+      id: string;
       objetivo: {
         ganharMassa: string;
         perderPeso: string;
@@ -106,7 +107,8 @@ export interface PtBRStrings {
     };
   };
   DeleteDialog: {
-    title: string
+    title: string,
+    titleTreino: string
   },
   Buttons: {
     salvar: string;

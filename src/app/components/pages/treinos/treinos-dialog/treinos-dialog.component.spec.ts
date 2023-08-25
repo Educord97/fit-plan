@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ResultadosTreinosDialogComponent } from './resultados-treinos-dialog.component';
+import { ResultadosTreinosDialogComponent } from './treinos-dialog.component';
 
 describe('ResultadosTreinosDialogComponent', () => {
   let component: ResultadosTreinosDialogComponent;
