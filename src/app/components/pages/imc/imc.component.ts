@@ -38,10 +38,15 @@ export class ImcComponent implements OnInit {
     this.loadStrings();
   }
 
-  loadStrings(): void {
-    this.commomService.getStrings().subscribe((data) => {
-      this.strings = data;
-    });
+  async loadStrings(): Promise<void> {
+    try {
+      const response = await this.commomService.getStrings().toPromise()
+      if(response) {
+        this.strings = response;
+      }
+    } catch (error) {
+      console.error('Erro na requisição:', error);
+    }
   }
 
   obterClassificacaoIMC(): string {

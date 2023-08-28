@@ -38,6 +38,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { ImcDeleteComponent } from './components/pages/imc/imc-delete/imc-delete.component';
 import { TreinosDeleteComponent } from './components/pages/treinos/treinos-delete/treino-delete.component';
 import { TreinosUpdateComponent } from './components/pages/treinos/treinos-update/treinos-update.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { TreinosUpdateComponent } from './components/pages/treinos/treinos-updat
     MatSelectModule,
     MatCheckboxModule,
     MatRadioModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

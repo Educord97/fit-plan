@@ -1,4 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  ViewEncapsulation,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { IIMC } from 'src/app/models/imc.interface';
 import { PtBRStrings } from 'src/app/models/pt-br.interface';
@@ -8,6 +15,7 @@ import { ImcDialogComponent } from '../imc/imc-dialog/imc-dialog.component';
 import { TreinosService } from 'src/app/services/treinos.service';
 import { ITreino } from '../../models/treino.model';
 import { IIntensidade, Intensidade } from '../../models/intensidade.model';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-resultados',
@@ -24,8 +32,11 @@ export class ResultadosComponent implements OnInit {
 
   strings?: PtBRStrings;
   imcResultado?: IIMC;
-  intensidade?: ITreino[]
-  objetivo?: ITreino[]
+  intensidade?: ITreino[];
+  objetivo?: ITreino[];
+
+  rating: number = 0;
+  ratings?: ITreino;
 
   @Input() imcFromParent?: string;
   @Input() intensidadeFromParent?: string;
@@ -37,7 +48,12 @@ export class ResultadosComponent implements OnInit {
     this.commomService.getStrings().subscribe((data) => {
       this.strings = data;
     });
+    this.load();
+    this.getreadLastImc();
+    this.getLastRate();
+  }
 
+  getreadLastImc(): void {
     this.imcService.readLastImc().subscribe((imc) => {
       if (imc !== null) {
         this.imcResultado = imc;
@@ -45,15 +61,30 @@ export class ResultadosComponent implements OnInit {
         this.commomService.showMessage('Nenhum IMC cadastrado!');
       }
     });
+  }
 
-    this.load();
+  rate(newRating: number): void {
+    this.treinoService.rate(newRating);
+    this.rating = newRating;
+  }
+
+  getLastRate(): void {
+    this.treinoService.readLastRate().subscribe((data) => {
+      if (data !== null) {
+        this.ratings = data;
+        this.rating = data.rating as any;
+      } else {
+        this.rating = 0;
+        this.commomService.showMessage('Nenhuma Classificação cadastrada!');
+      }
+    });
   }
 
   load(): void {
     this.treinoService.readLastIntensidadeByTreino().subscribe((treino) => {
       if (treino !== null) {
-        this.intensidade = treino.intensidades
-        this.objetivo = treino.objetivos
+        this.intensidade = treino.intensidades;
+        this.objetivo = treino.objetivos;
       } else {
         this.commomService.showMessage('Nenhum TREINO cadastrado!');
       }
