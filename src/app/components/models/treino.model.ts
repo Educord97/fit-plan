@@ -8,6 +8,7 @@ export interface ITreino {
   objetivos?: IObjetivo[];
   intensidades?: IIntensidade[];
   selected?: boolean;
+  rating?: number;
 }
 
 export class Treino implements ITreino {
@@ -17,6 +18,7 @@ export class Treino implements ITreino {
     public diasSemana?: string[],
     public objetivos?: IObjetivo[],
     public intensidades?: IIntensidade[],
-    public selected?: boolean
+    public selected?: boolean,
+    public rating?: number
   ) {}
 }

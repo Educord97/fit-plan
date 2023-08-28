@@ -111,12 +111,19 @@ export class TreinosComponent implements OnInit {
       : objetivo1 === objetivo2;
   }
 
-  readTreinos(): void {
-    this.treinoService.getTreinos().subscribe((res: HttpResponse<Treino[]>) => {
-      this.treinos = res.body || [];
-      console.log(this.treinos);
-    });
+  async readTreinos(): Promise<void> {
+    try {
+      const response = await this.treinoService.getTreinos().toPromise();
+      if (response?.status === 200) {
+        this.treinos = response.body || [];
+      } else {
+        console.error('Erro na resposta da requisição.');
+      }
+    } catch (error) {
+      console.error('Erro na requisição:', error);
+    }
   }
+  
 
   readObjetivos(): void {
     this.treinoService

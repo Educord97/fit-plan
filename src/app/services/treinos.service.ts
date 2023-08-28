@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable, EMPTY } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { IObjetivo } from '../components/models/objetivo.model';
@@ -80,6 +80,35 @@ export class TreinosService {
     const url = `${this.baseUrl}/treinos-criados/${id}`;
     return this.http.delete<ITreino>(url).pipe(
       map((obj) => obj),
+      catchError((e) => this.errorHandler(e))
+    );
+  }
+
+  rate(newRating: number): void {
+    const rating = newRating;
+    const url = `${this.baseUrl}/classificacao/`;
+    const data = { rating: newRating };
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    this.http.post(url, data, { headers }).subscribe(
+      response => {
+        console.log('Classificação salva com sucesso:', response);
+      },
+      error => {
+        console.error('Erro ao salvar a classificação:', error);
+      }
+    );
+  }
+
+  readLastRate(): Observable<ITreino | null> {
+    const url = `${this.baseUrl}/classificacao`;
+    return this.http.get<ITreino[]>(url).pipe(
+      map((classificacao) => {
+        if (classificacao && classificacao.length > 0) {
+          return classificacao[classificacao.length - 1];
+        }
+        return null;
+      }),
       catchError((e) => this.errorHandler(e))
     );
   }

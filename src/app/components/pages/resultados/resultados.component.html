@@ -11,7 +11,27 @@
     <span *ngIf="objetivo">
         <h4>{{ objetivoFromParent }}: {{ objetivo[0].nome }}</h4>
     </span>
-    <span>
+    <div class="avaliacao">
         <h4>{{ avaliacaoEstrelasFromParent }}: </h4>
-    </span>
+        <button mat-icon-button (click)="rate(1)">
+            <mat-icon
+                [ngClass]="{'filled': (rating >= 1) || (ratings && ratings.rating && ratings.rating >= 1)}">star</mat-icon>
+        </button>
+        <button mat-icon-button (click)="rate(2)">
+            <mat-icon
+                [ngClass]="{'filled': (rating >= 2) || (ratings && ratings.rating && ratings.rating >= 2)}">star</mat-icon>
+        </button>
+        <button mat-icon-button (click)="rate(3)">
+            <mat-icon
+                [ngClass]="{'filled': (rating >= 3) || (ratings && ratings.rating && ratings.rating >= 3)}">star</mat-icon>
+        </button>
+        <button mat-icon-button (click)="rate(4)">
+            <mat-icon
+                [ngClass]="{'filled': (rating >= 4) || (ratings && ratings.rating && ratings.rating >= 4)}">star</mat-icon>
+        </button>
+        <button mat-icon-button (click)="rate(5)">
+            <mat-icon
+                [ngClass]="{'filled': (rating === 5) || (ratings && ratings.rating && ratings.rating === 5)}">star</mat-icon>
+        </button>
+    </div>
 </div>
