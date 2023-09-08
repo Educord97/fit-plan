@@ -37,11 +37,11 @@
   "treinos-criados": [
     {
       "id": 1,
-      "nome": "Treino CARAMBA",
+      "nome": "Treino Leve 2",
       "objetivos": [
         {
-          "id": "2",
-          "nome": "Perder peso"
+          "id": "1",
+          "nome": "Ganhar Massa Muscular"
         }
       ],
       "intensidades": [
@@ -59,60 +59,6 @@
           "quarta": "Ombros",
           "quinta": "Pernas",
           "sexta": "Peito e Tríceps"
-        }
-      }
-    },
-    {
-      "id": 2,
-      "nome": "ULTIMO TREINO",
-      "objetivos": [
-        {
-          "id": "1",
-          "nome": "Ganhar Massa Muscular"
-        }
-      ],
-      "intensidades": [
-        {
-          "id": "2",
-          "nome": "Média"
-        }
-      ],
-      "selected": {
-        "id": 1,
-        "nome": "Treino 1",
-        "diasSemana": {
-          "segunda": "Costas e Ombros",
-          "terca": "Peito e Tríceps",
-          "quarta": "Costas e Ombros",
-          "quinta": "Pernas",
-          "sexta": "Ombros"
-        }
-      }
-    },
-    {
-      "id": 3,
-      "nome": "esta",
-      "objetivos": [
-        {
-          "id": "1",
-          "nome": "Ganhar Massa Muscular"
-        }
-      ],
-      "intensidades": [
-        {
-          "id": "1",
-          "nome": "Leve"
-        }
-      ],
-      "selected": {
-        "id": 1,
-        "nome": "Treino 1",
-        "diasSemana": {
-          "segunda": "Costas e Ombros",
-          "terca": "Peito e Tríceps",
-          "quarta": "Costas e Ombros",
-          "quinta": "Pernas",
-          "sexta": "Ombros"
         }
       }
     }
@@ -153,6 +99,18 @@
       "altura": 188,
       "imc": 42.4,
       "id": 2
+    },
+    {
+      "peso": 80,
+      "altura": 188,
+      "imc": 22.6,
+      "id": 3
+    },
+    {
+      "peso": 80,
+      "altura": 184,
+      "imc": 23.6,
+      "id": 4
     }
   ],
   "classificacao": [
@@ -183,6 +141,86 @@
     {
       "rating": 5,
       "id": 7
+    },
+    {
+      "rating": 4,
+      "id": 8
+    },
+    {
+      "rating": 3,
+      "id": 9
+    },
+    {
+      "rating": 4,
+      "id": 10
+    },
+    {
+      "rating": 5,
+      "id": 11
+    },
+    {
+      "rating": 3,
+      "id": 12
+    },
+    {
+      "rating": 4,
+      "id": 13
+    },
+    {
+      "rating": 5,
+      "id": 14
+    },
+    {
+      "rating": 3,
+      "id": 15
+    },
+    {
+      "rating": 3,
+      "id": 16
+    },
+    {
+      "rating": 2,
+      "id": 17
+    },
+    {
+      "rating": 3,
+      "id": 18
+    },
+    {
+      "rating": 4,
+      "id": 19
+    },
+    {
+      "rating": 5,
+      "id": 20
+    },
+    {
+      "rating": 2,
+      "id": 21
+    },
+    {
+      "rating": 1,
+      "id": 22
+    },
+    {
+      "rating": 2,
+      "id": 23
+    },
+    {
+      "rating": 3,
+      "id": 24
+    },
+    {
+      "rating": 4,
+      "id": 25
+    },
+    {
+      "rating": 5,
+      "id": 26
+    },
+    {
+      "rating": 3,
+      "id": 27
     }
   ]
 }

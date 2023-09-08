@@ -1,34 +1,76 @@
 <div class="container-all">
 
     <div class="container-resultados">
-        <h3 style="text-align: center;"> 
+        <h3 style="text-align: center;">
             {{ strings?.HomeResultados?.resultados }}</h3>
         <div class="divider"></div>
         <ng-container *ngIf="imcToParent">
-            <app-resultados  
-            [imcFromParent]="imcToParent"
-            [intensidadeFromParent]="intensidadeToParent"
-            [avaliacaoTreinoFromParent]="avaliacaoTreinoToParent"
-            [avaliacaoEstrelasFromParent]="avaliacaoEstrelasToParent"
-            [objetivoFromParent]="objetivoToParent"
-        ></app-resultados>
-          </ng-container>
-       
+            <app-resultados [imcFromParent]="imcToParent" [intensidadeFromParent]="intensidadeToParent"
+                [avaliacaoTreinoFromParent]="avaliacaoTreinoToParent"
+                [avaliacaoEstrelasFromParent]="avaliacaoEstrelasToParent"
+                [objetivoFromParent]="objetivoToParent"></app-resultados>
+        </ng-container>
+
     </div>
     <div class="container-treinos">
         <h3 style="text-align: center;">{{ strings?.Treinos?.meusTreinos }}</h3>
-
-        <div class="content-treinos">
-            <h1 class="title-imc">
-                CONTAINER TREINOS <br>
-                Atividade 12 - Cadastro com requisições assíncronas </h1>
-        
-            <h2>Itens atendidos da atividade</h2>
-            <ul>
-                <li>Fazer requisições a API com tratamento da resposta com Promises (pode usar Fetch API, async/await ou lastValueFrom do RXJS).</li>
-                <li>Cadastrar uma entidade no JSON Server</li>
-                <li>Criação da opção de "Classificação"</li>
-            </ul>
+        <div *ngIf="treinos && treinos.length === 0">
+            <h4 class="mat-elevation-z4">Nenhum Treino Cadastrado!</h4>
         </div>
+        <mat-dialog-content class="mat-typography" style="width: 900px;" *ngIf="treinos && treinos.length > 0">
+            <div class="mat-elevation-z4">
+                <table mat-table [dataSource]="treinos">
+              
+                  <ng-container matColumnDef="nome">
+                    <th mat-header-cell *matHeaderCellDef class="bg-blue">Nome</th>
+                    <td mat-cell *matCellDef="let row">{{row.nome}}</td>
+                  </ng-container>
+        
+                  <ng-container matColumnDef="segunda">
+                    <th mat-header-cell *matHeaderCellDef class="bg-blue">Segunda</th>
+                    <td mat-cell *matCellDef="let row">{{ row.selected.diasSemana.segunda }}</td>
+                  </ng-container>
+        
+                  <ng-container matColumnDef="terca">
+                    <th mat-header-cell *matHeaderCellDef class="bg-blue">Terça</th>
+                    <td mat-cell *matCellDef="let row">{{ row.selected.diasSemana.terca }}</td>
+                  </ng-container>
+        
+                  <ng-container matColumnDef="quarta">
+                    <th mat-header-cell *matHeaderCellDef class="bg-blue">Quarta</th>
+                    <td mat-cell *matCellDef="let row">{{ row.selected.diasSemana.quarta }}</td>
+                  </ng-container>
+        
+                  <ng-container matColumnDef="quinta">
+                    <th mat-header-cell *matHeaderCellDef class="bg-blue">Quinta</th>
+                    <td mat-cell *matCellDef="let row">{{ row.selected.diasSemana.quinta }}</td>
+                  </ng-container>
+        
+                  <ng-container matColumnDef="sexta">
+                    <th mat-header-cell *matHeaderCellDef class="bg-blue">Sexta</th>
+                    <td mat-cell *matCellDef="let row">{{ row.selected.diasSemana.sexta }}</td>
+                  </ng-container>
+        
+                  <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef class="text-center bg-blue"></th>
+                    <td mat-cell *matCellDef="let row" class="text-center d-flex bg-blue">
+                      <a routerLink="/treinos-criados/update/{{ row.id }}" class="edit" mat-dialog-close>
+                        <i class="material-icons">
+                          edit
+                        </i>
+                      </a>
+                      <a routerLink="/treinos-criados/delete/{{ row.id }}" class="delete" mat-dialog-close>
+                        <i class="material-icons">
+                          delete
+                        </i>
+                      </a>
+                    </td>
+                  </ng-container>
+              
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+              </div>
+        </mat-dialog-content>
     </div>
 </div>
