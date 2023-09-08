@@ -46,7 +46,7 @@ export class TreinosComponent implements OnInit {
   ];
   clickedRows = new Set<Treino>();
 
-  radioControl = new FormControl(); // FormControl para os botões de rádio
+  radioControl = new FormControl();
 
   editForm = this.fb.group({
     id: [],
@@ -73,7 +73,7 @@ export class TreinosComponent implements OnInit {
   save(): void {
     const treino = this.createFromForm();
     this.subscribeToSaveResponse(this.treinoService.createTreino(treino));
-    console.log(treino)
+    this.refreshPage()
   }
 
   createFromForm(): Treino {
@@ -98,11 +98,15 @@ export class TreinosComponent implements OnInit {
   }
 
   protected onSaveSuccess(): void {
-    console.log('CRIADO COM SUCESSO');
+    this.commomService.showMessage('Treino adicionado!');
   }
 
   protected onSaveError(): void {
-    console.log('ERRO!!!');
+    this.commomService.showMessage('Treino NÃO adicionado!');
+  }
+
+  refreshPage(): void {
+    window.location.reload();
   }
 
   compareObjetivos(objetivo1: IObjetivo, objetivo2: IObjetivo): boolean {

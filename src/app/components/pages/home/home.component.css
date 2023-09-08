@@ -1,5 +1,5 @@
 .container-all {
-    margin-top: 90px;
+    margin-top: 50px;
     padding: 40px;
     display: flex;
     flex-direction: row;
@@ -31,4 +31,25 @@
 
 .content-treinos {
     margin-top: 35px;
+}
+
+.card-treino {
+    display: flex;
+    flex-direction: row;
+}
+
+table {
+    background: #DC8218 !important;
+}
+
+.mat-elevation-z4 {
+    margin-top: 46px;
+}
+
+tr, a {
+    color: #fff;
+}
+
+.bg-blue {
+    background: #5C4B8B !important;
 }

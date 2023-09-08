@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PtBRStrings } from 'src/app/models/pt-br.interface';
 import { CommomService } from 'src/app/services/commom-services.service';
+import { ITreino } from '../../models/treino.model';
+import { TreinosService } from 'src/app/services/treinos.service';
 
 @Component({
   selector: 'app-home',
@@ -16,10 +18,33 @@ export class HomeComponent implements OnInit {
   objetivoToParent?: string;
   avaliacaoEstrelasToParent?: string;
 
-  constructor(private commomService: CommomService) {}
+  treinos: ITreino[] = [];
+
+  constructor(
+    private commomService: CommomService,
+    private treinoService: TreinosService
+  ) {}
+
+  displayedColumns = [
+    'nome',
+    'segunda',
+    'terca',
+    'quarta',
+    'quinta',
+    'sexta',
+    'action',
+  ];
 
   ngOnInit() {
     this.loadStrings();
+    this.loadTreinos();
+  }
+
+  loadTreinos(): void {
+    this.treinoService.getTreinosCriados().subscribe((treinos) => {
+      this.treinos = treinos.body || [];
+      console.log("TREINOS: ",this.treinos);
+    });
   }
 
   loadStrings(): void {
