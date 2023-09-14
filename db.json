@@ -36,8 +36,8 @@
   ],
   "treinos-criados": [
     {
-      "id": 1,
-      "nome": "Treino Leve 2",
+      "id": 2,
+      "nome": "Treino Crossfit",
       "objetivos": [
         {
           "id": "1",
@@ -46,19 +46,19 @@
       ],
       "intensidades": [
         {
-          "id": "2",
-          "nome": "Média"
+          "id": "3",
+          "nome": "Pesada"
         }
       ],
       "selected": {
-        "id": 3,
-        "nome": "Treino 3",
+        "id": 2,
+        "nome": "Treino 2",
         "diasSemana": {
-          "segunda": "Costas e Bíceps",
-          "terca": "Pernas",
-          "quarta": "Ombros",
-          "quinta": "Pernas",
-          "sexta": "Peito e Tríceps"
+          "segunda": "Pernas",
+          "terca": "Peito",
+          "quarta": "Tríceps",
+          "quinta": "Bíceps",
+          "sexta": "Costas e Ombros"
         }
       }
     }
@@ -89,28 +89,10 @@
   ],
   "imcResultados": [
     {
-      "peso": 79,
+      "peso": 82,
       "altura": 184,
-      "imc": 23.3,
-      "id": 1
-    },
-    {
-      "peso": 150,
-      "altura": 188,
-      "imc": 42.4,
-      "id": 2
-    },
-    {
-      "peso": 80,
-      "altura": 188,
-      "imc": 22.6,
-      "id": 3
-    },
-    {
-      "peso": 80,
-      "altura": 184,
-      "imc": 23.6,
-      "id": 4
+      "imc": 24.2,
+      "id": 5
     }
   ],
   "classificacao": [
@@ -125,102 +107,6 @@
     {
       "rating": 2,
       "id": 3
-    },
-    {
-      "rating": 3,
-      "id": 4
-    },
-    {
-      "rating": 5,
-      "id": 5
-    },
-    {
-      "rating": 2,
-      "id": 6
-    },
-    {
-      "rating": 5,
-      "id": 7
-    },
-    {
-      "rating": 4,
-      "id": 8
-    },
-    {
-      "rating": 3,
-      "id": 9
-    },
-    {
-      "rating": 4,
-      "id": 10
-    },
-    {
-      "rating": 5,
-      "id": 11
-    },
-    {
-      "rating": 3,
-      "id": 12
-    },
-    {
-      "rating": 4,
-      "id": 13
-    },
-    {
-      "rating": 5,
-      "id": 14
-    },
-    {
-      "rating": 3,
-      "id": 15
-    },
-    {
-      "rating": 3,
-      "id": 16
-    },
-    {
-      "rating": 2,
-      "id": 17
-    },
-    {
-      "rating": 3,
-      "id": 18
-    },
-    {
-      "rating": 4,
-      "id": 19
-    },
-    {
-      "rating": 5,
-      "id": 20
-    },
-    {
-      "rating": 2,
-      "id": 21
-    },
-    {
-      "rating": 1,
-      "id": 22
-    },
-    {
-      "rating": 2,
-      "id": 23
-    },
-    {
-      "rating": 3,
-      "id": 24
-    },
-    {
-      "rating": 4,
-      "id": 25
-    },
-    {
-      "rating": 5,
-      "id": 26
-    },
-    {
-      "rating": 3,
-      "id": 27
     }
   ]
 }
